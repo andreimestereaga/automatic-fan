@@ -1,0 +1,1381 @@
+
+air_blowerv1.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         0000066a  00000000  00000000  00000094  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         00000004  00800060  0000066a  000006fe  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .bss          0000005f  00800064  00800064  00000702  2**0
+                  ALLOC
+  3 .debug_aranges 00000060  00000000  00000000  00000702  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  4 .debug_pubnames 000001be  00000000  00000000  00000762  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  5 .debug_info   0000088a  00000000  00000000  00000920  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_abbrev 00000241  00000000  00000000  000011aa  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_line   0000084a  00000000  00000000  000013eb  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_frame  00000070  00000000  00000000  00001c38  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_str    00000220  00000000  00000000  00001ca8  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_loc    0000052e  00000000  00000000  00001ec8  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_ranges 00000090  00000000  00000000  000023f6  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	18 c0       	rjmp	.+48     	; 0x32 <__ctors_end>
+   2:	30 c0       	rjmp	.+96     	; 0x64 <__bad_interrupt>
+   4:	2f c0       	rjmp	.+94     	; 0x64 <__bad_interrupt>
+   6:	2e c0       	rjmp	.+92     	; 0x64 <__bad_interrupt>
+   8:	2d c0       	rjmp	.+90     	; 0x64 <__bad_interrupt>
+   a:	2c c0       	rjmp	.+88     	; 0x64 <__bad_interrupt>
+   c:	2b c0       	rjmp	.+86     	; 0x64 <__bad_interrupt>
+   e:	2a c0       	rjmp	.+84     	; 0x64 <__bad_interrupt>
+  10:	29 c0       	rjmp	.+82     	; 0x64 <__bad_interrupt>
+  12:	28 c0       	rjmp	.+80     	; 0x64 <__bad_interrupt>
+  14:	27 c0       	rjmp	.+78     	; 0x64 <__bad_interrupt>
+  16:	26 c0       	rjmp	.+76     	; 0x64 <__bad_interrupt>
+  18:	25 c0       	rjmp	.+74     	; 0x64 <__bad_interrupt>
+  1a:	24 c0       	rjmp	.+72     	; 0x64 <__bad_interrupt>
+  1c:	23 c0       	rjmp	.+70     	; 0x64 <__bad_interrupt>
+  1e:	22 c0       	rjmp	.+68     	; 0x64 <__bad_interrupt>
+  20:	21 c0       	rjmp	.+66     	; 0x64 <__bad_interrupt>
+  22:	99 c0       	rjmp	.+306    	; 0x156 <__stack+0x77>
+  24:	d8 c1       	rjmp	.+944    	; 0x3d6 <__stack+0x2f7>
+  26:	e0 c1       	rjmp	.+960    	; 0x3e8 <__stack+0x309>
+  28:	69 c1       	rjmp	.+722    	; 0x2fc <__stack+0x21d>
+  2a:	26 c1       	rjmp	.+588    	; 0x278 <__stack+0x199>
+  2c:	3c c1       	rjmp	.+632    	; 0x2a6 <__stack+0x1c7>
+  2e:	53 c1       	rjmp	.+678    	; 0x2d6 <__stack+0x1f7>
+  30:	bf c0       	rjmp	.+382    	; 0x1b0 <__stack+0xd1>
+
+00000032 <__ctors_end>:
+  32:	11 24       	eor	r1, r1
+  34:	1f be       	out	0x3f, r1	; 63
+  36:	cf ed       	ldi	r28, 0xDF	; 223
+  38:	cd bf       	out	0x3d, r28	; 61
+
+0000003a <__do_copy_data>:
+  3a:	10 e0       	ldi	r17, 0x00	; 0
+  3c:	a0 e6       	ldi	r26, 0x60	; 96
+  3e:	b0 e0       	ldi	r27, 0x00	; 0
+  40:	ea e6       	ldi	r30, 0x6A	; 106
+  42:	f6 e0       	ldi	r31, 0x06	; 6
+  44:	02 c0       	rjmp	.+4      	; 0x4a <.do_copy_data_start>
+
+00000046 <.do_copy_data_loop>:
+  46:	05 90       	lpm	r0, Z+
+  48:	0d 92       	st	X+, r0
+
+0000004a <.do_copy_data_start>:
+  4a:	a4 36       	cpi	r26, 0x64	; 100
+  4c:	b1 07       	cpc	r27, r17
+  4e:	d9 f7       	brne	.-10     	; 0x46 <.do_copy_data_loop>
+
+00000050 <__do_clear_bss>:
+  50:	10 e0       	ldi	r17, 0x00	; 0
+  52:	a4 e6       	ldi	r26, 0x64	; 100
+  54:	b0 e0       	ldi	r27, 0x00	; 0
+  56:	01 c0       	rjmp	.+2      	; 0x5a <.do_clear_bss_start>
+
+00000058 <.do_clear_bss_loop>:
+  58:	1d 92       	st	X+, r1
+
+0000005a <.do_clear_bss_start>:
+  5a:	a3 3c       	cpi	r26, 0xC3	; 195
+  5c:	b1 07       	cpc	r27, r17
+  5e:	e1 f7       	brne	.-8      	; 0x58 <.do_clear_bss_loop>
+  60:	2e d0       	rcall	.+92     	; 0xbe <main>
+  62:	01 c3       	rjmp	.+1538   	; 0x666 <_exit>
+
+00000064 <__bad_interrupt>:
+  64:	cd cf       	rjmp	.-102    	; 0x0 <__vectors>
+
+00000066 <_sys_init>:
+
+#if __DEBUG
+	dbg_tx_init();
+#endif
+
+	SET_SENSOR_INPUT;
+  66:	d9 9a       	sbi	0x1b, 1	; 27
+	SET_BUTTON;
+  68:	da 9a       	sbi	0x1b, 2	; 27
+	SET_STATUS_LED;
+  6a:	b9 9a       	sbi	0x17, 1	; 23
+	SET_ERROR_LED;
+  6c:	b8 9a       	sbi	0x17, 0	; 23
+	SET_TERMO_LED;
+  6e:	d3 9a       	sbi	0x1a, 3	; 26
+
+	TERMO_CS_CONF;
+  70:	d0 9a       	sbi	0x1a, 0	; 26
+	TERMO_SO_CONF;
+  72:	dd 9a       	sbi	0x1b, 5	; 27
+	TERMO_SCK_CONF;
+  74:	d4 9a       	sbi	0x1a, 4	; 26
+
+	at24_pwmInit();
+  76:	dc d2       	rcall	.+1464   	; 0x630 <at24_pwmInit>
+
+	SET_PWM_A(0);
+  78:	16 be       	out	0x36, r1	; 54
+
+
+	LED_ERROR_OFF;
+  7a:	c0 9a       	sbi	0x18, 0	; 24
+	LED_TERMO_OFF;
+  7c:	db 9a       	sbi	0x1b, 3	; 27
+
+
+	LED_STATUS_ON;
+  7e:	c1 98       	cbi	0x18, 1	; 24
+  80:	84 ef       	ldi	r24, 0xF4	; 244
+  82:	91 e0       	ldi	r25, 0x01	; 1
+    milliseconds can be achieved.
+ */
+void
+_delay_loop_2(uint16_t __count)
+{
+	__asm__ volatile (
+  84:	28 ec       	ldi	r18, 0xC8	; 200
+  86:	30 e0       	ldi	r19, 0x00	; 0
+  88:	f9 01       	movw	r30, r18
+  8a:	31 97       	sbiw	r30, 0x01	; 1
+  8c:	f1 f7       	brne	.-4      	; 0x8a <_sys_init+0x24>
+		__ticks = (uint16_t) (__ms * 10.0);
+		while(__ticks)
+		{
+			// wait 1/10 ms
+			_delay_loop_2(((F_CPU) / 4e3) / 10);
+			__ticks --;
+  8e:	01 97       	sbiw	r24, 0x01	; 1
+		__ticks = 1;
+	else if (__tmp > 65535)
+	{
+		//	__ticks = requested delay in 1/10 ms
+		__ticks = (uint16_t) (__ms * 10.0);
+		while(__ticks)
+  90:	d9 f7       	brne	.-10     	; 0x88 <_sys_init+0x22>
+	_delay_ms(50);
+	LED_STATUS_OFF;
+  92:	c1 9a       	sbi	0x18, 1	; 24
+  94:	84 ef       	ldi	r24, 0xF4	; 244
+  96:	91 e0       	ldi	r25, 0x01	; 1
+  98:	28 ec       	ldi	r18, 0xC8	; 200
+  9a:	30 e0       	ldi	r19, 0x00	; 0
+  9c:	f9 01       	movw	r30, r18
+  9e:	31 97       	sbiw	r30, 0x01	; 1
+  a0:	f1 f7       	brne	.-4      	; 0x9e <_sys_init+0x38>
+		{
+			// wait 1/10 ms
+			_delay_loop_2(((F_CPU) / 4e3) / 10);
+			__ticks --;
+  a2:	01 97       	sbiw	r24, 0x01	; 1
+		__ticks = 1;
+	else if (__tmp > 65535)
+	{
+		//	__ticks = requested delay in 1/10 ms
+		__ticks = (uint16_t) (__ms * 10.0);
+		while(__ticks)
+  a4:	d9 f7       	brne	.-10     	; 0x9c <_sys_init+0x36>
+	_delay_ms(50);
+	LED_STATUS_ON;
+  a6:	c1 98       	cbi	0x18, 1	; 24
+  a8:	88 ee       	ldi	r24, 0xE8	; 232
+  aa:	93 e0       	ldi	r25, 0x03	; 3
+  ac:	28 ec       	ldi	r18, 0xC8	; 200
+  ae:	30 e0       	ldi	r19, 0x00	; 0
+  b0:	f9 01       	movw	r30, r18
+  b2:	31 97       	sbiw	r30, 0x01	; 1
+  b4:	f1 f7       	brne	.-4      	; 0xb2 <_sys_init+0x4c>
+		{
+			// wait 1/10 ms
+			_delay_loop_2(((F_CPU) / 4e3) / 10);
+			__ticks --;
+  b6:	01 97       	sbiw	r24, 0x01	; 1
+		__ticks = 1;
+	else if (__tmp > 65535)
+	{
+		//	__ticks = requested delay in 1/10 ms
+		__ticks = (uint16_t) (__ms * 10.0);
+		while(__ticks)
+  b8:	d9 f7       	brne	.-10     	; 0xb0 <_sys_init+0x4a>
+	_delay_ms(100);
+	LED_STATUS_OFF;
+  ba:	c1 9a       	sbi	0x18, 1	; 24
+
+};
+  bc:	08 95       	ret
+
+000000be <main>:
+
+
+
+
+
+int main(){
+  be:	2f 92       	push	r2
+  c0:	3f 92       	push	r3
+  c2:	4f 92       	push	r4
+  c4:	5f 92       	push	r5
+  c6:	6f 92       	push	r6
+  c8:	7f 92       	push	r7
+  ca:	8f 92       	push	r8
+  cc:	9f 92       	push	r9
+  ce:	af 92       	push	r10
+  d0:	bf 92       	push	r11
+  d2:	cf 92       	push	r12
+  d4:	df 92       	push	r13
+  d6:	ef 92       	push	r14
+  d8:	ff 92       	push	r15
+  da:	0f 93       	push	r16
+  dc:	1f 93       	push	r17
+  de:	cf 93       	push	r28
+  e0:	df 93       	push	r29
+	
+	_sys_init();	
+  e2:	c1 df       	rcall	.-126    	; 0x66 <_sys_init>
+  e4:	90 90 75 00 	lds	r9, 0x0075
+  e8:	70 91 6e 00 	lds	r23, 0x006E
+  ec:	d0 90 6d 00 	lds	r13, 0x006D
+  f0:	c0 90 6f 00 	lds	r12, 0x006F
+  f4:	a0 90 70 00 	lds	r10, 0x0070
+  f8:	b0 90 71 00 	lds	r11, 0x0071
+  fc:	80 90 7a 00 	lds	r8, 0x007A
+					if( hold_counter > 5000 ){
+				
+						signal_periods[idx] = 0;
+					}
+					else if( (hold_counter > 200) ){// && (hold_counter <= THOMSON_REPEAT_THR) ){
+						signal_periods[idx] = 1;
+ 100:	55 24       	eor	r5, r5
+ 102:	53 94       	inc	r5
+ 104:	c8 ec       	ldi	r28, 0xC8	; 200
+ 106:	d0 e0       	ldi	r29, 0x00	; 0
+
+					pwm_isOn ^= 0x1;
+					termocoupleOn = 0;
+
+					if(pwm_isOn){
+							SET_PWM_A(u8PwmVals[0]);
+ 108:	f4 e6       	ldi	r31, 0x64	; 100
+ 10a:	4f 2e       	mov	r4, r31
+ 10c:	e0 ed       	ldi	r30, 0xD0	; 208
+ 10e:	6e 2e       	mov	r6, r30
+ 110:	e7 e0       	ldi	r30, 0x07	; 7
+ 112:	7e 2e       	mov	r7, r30
+			for(i = 15; i >= 0; i--){
+				TERMO_SCK_LOW;
+				_delay_ms(1);
+
+				if( TERMO_READ_SO ){
+					temperatureRaw |= 1 << i;
+ 114:	61 e0       	ldi	r22, 0x01	; 1
+ 116:	26 2e       	mov	r2, r22
+ 118:	31 2c       	mov	r3, r1
+
+
+
+int main(){
+	
+	_sys_init();	
+ 11a:	08 94       	sec
+ 11c:	a1 1c       	adc	r10, r1
+ 11e:	b1 1c       	adc	r11, r1
+	while(1){
+
+
+	
+	
+	sig_lvl = GET_DEC_LVL;
+ 120:	89 b3       	in	r24, 0x19	; 25
+ 122:	90 e0       	ldi	r25, 0x00	; 0
+ 124:	82 70       	andi	r24, 0x02	; 2
+ 126:	90 70       	andi	r25, 0x00	; 0
+ 128:	96 95       	lsr	r25
+ 12a:	87 95       	ror	r24
+ 12c:	80 93 80 00 	sts	0x0080, r24
+	button_lvl = GET_BUTTON_INPUT;
+ 130:	89 b3       	in	r24, 0x19	; 25
+ 132:	90 e0       	ldi	r25, 0x00	; 0
+ 134:	84 70       	andi	r24, 0x04	; 4
+ 136:	90 70       	andi	r25, 0x00	; 0
+ 138:	95 95       	asr	r25
+ 13a:	87 95       	ror	r24
+ 13c:	95 95       	asr	r25
+ 13e:	87 95       	ror	r24
+ 140:	98 2f       	mov	r25, r24
+
+	termoCheckTimer++;
+	
+
+	switch(dec_state){
+ 142:	80 91 7d 00 	lds	r24, 0x007D
+ 146:	e8 2f       	mov	r30, r24
+ 148:	f0 e0       	ldi	r31, 0x00	; 0
+ 14a:	e8 30       	cpi	r30, 0x08	; 8
+ 14c:	f1 05       	cpc	r31, r1
+ 14e:	28 f7       	brcc	.-54     	; 0x11a <__stack+0x3b>
+ 150:	ef 5e       	subi	r30, 0xEF	; 239
+ 152:	ff 4f       	sbci	r31, 0xFF	; 255
+ 154:	09 94       	ijmp
+		
+		case IDLE:
+		{
+			
+			if(sig_lvl == 0){
+ 156:	80 91 80 00 	lds	r24, 0x0080
+ 15a:	88 23       	and	r24, r24
+ 15c:	41 f4       	brne	.+16     	; 0x16e <__stack+0x8f>
+				dec_state = CHECK_SIG;
+ 15e:	23 e0       	ldi	r18, 0x03	; 3
+ 160:	20 93 7d 00 	sts	0x007D, r18
+				hold_counter = 0;
+ 164:	10 92 7f 00 	sts	0x007F, r1
+ 168:	10 92 7e 00 	sts	0x007E, r1
+ 16c:	d6 cf       	rjmp	.-84     	; 0x11a <__stack+0x3b>
+	
+			
+			}
+			else if( button_lvl == 0 ){
+ 16e:	99 23       	and	r25, r25
+ 170:	29 f4       	brne	.+10     	; 0x17c <__stack+0x9d>
+				dec_state = BUTTON_DOWN;
+ 172:	84 e0       	ldi	r24, 0x04	; 4
+ 174:	80 93 7d 00 	sts	0x007D, r24
+ 178:	88 24       	eor	r8, r8
+ 17a:	cf cf       	rjmp	.-98     	; 0x11a <__stack+0x3b>
+				button_count = 0;
+			}
+			else if(termocoupleOn && (termoCheckTimer == TERMO_CHECK_TIMEOUT) ){
+ 17c:	cc 20       	and	r12, r12
+ 17e:	09 f4       	brne	.+2      	; 0x182 <__stack+0xa3>
+ 180:	78 c0       	rjmp	.+240    	; 0x272 <__stack+0x193>
+ 182:	20 e6       	ldi	r18, 0x60	; 96
+ 184:	a2 16       	cp	r10, r18
+ 186:	2a ee       	ldi	r18, 0xEA	; 234
+ 188:	b2 06       	cpc	r11, r18
+ 18a:	09 f0       	breq	.+2      	; 0x18e <__stack+0xaf>
+ 18c:	72 c0       	rjmp	.+228    	; 0x272 <__stack+0x193>
+
+				termoCheckTimer = 0;
+
+
+				if(checkTermoTim == TERMO_CHECK_TIMEOUT2){
+ 18e:	80 91 78 00 	lds	r24, 0x0078
+ 192:	85 30       	cpi	r24, 0x05	; 5
+ 194:	29 f4       	brne	.+10     	; 0x1a0 <__stack+0xc1>
+
+					dec_state = TERMO_READING;
+ 196:	87 e0       	ldi	r24, 0x07	; 7
+ 198:	80 93 7d 00 	sts	0x007D, r24
+					checkTermoTim = 0;
+ 19c:	10 92 78 00 	sts	0x0078, r1
+
+				}
+				checkTermoTim++;
+ 1a0:	80 91 78 00 	lds	r24, 0x0078
+ 1a4:	8f 5f       	subi	r24, 0xFF	; 255
+ 1a6:	80 93 78 00 	sts	0x0078, r24
+ 1aa:	aa 24       	eor	r10, r10
+ 1ac:	bb 24       	eor	r11, r11
+ 1ae:	b5 cf       	rjmp	.-150    	; 0x11a <__stack+0x3b>
+		case TERMO_READING:
+
+			
+			temperatureRaw = 0;
+			temperatureCel = 0;
+			TERMO_CS_LOW;
+ 1b0:	d8 98       	cbi	0x1b, 0	; 27
+ 1b2:	c3 01       	movw	r24, r6
+ 1b4:	01 97       	sbiw	r24, 0x01	; 1
+ 1b6:	f1 f7       	brne	.-4      	; 0x1b4 <__stack+0xd5>
+ 1b8:	40 e0       	ldi	r20, 0x00	; 0
+ 1ba:	50 e0       	ldi	r21, 0x00	; 0
+ 1bc:	2f e0       	ldi	r18, 0x0F	; 15
+ 1be:	30 e0       	ldi	r19, 0x00	; 0
+
+			_delay_ms(1);
+
+			for(i = 15; i >= 0; i--){
+				TERMO_SCK_LOW;
+ 1c0:	dc 98       	cbi	0x1b, 4	; 27
+ 1c2:	c3 01       	movw	r24, r6
+ 1c4:	01 97       	sbiw	r24, 0x01	; 1
+ 1c6:	f1 f7       	brne	.-4      	; 0x1c4 <__stack+0xe5>
+				_delay_ms(1);
+
+				if( TERMO_READ_SO ){
+ 1c8:	cd 9b       	sbis	0x19, 5	; 25
+ 1ca:	09 c0       	rjmp	.+18     	; 0x1de <__stack+0xff>
+					temperatureRaw |= 1 << i;
+ 1cc:	c1 01       	movw	r24, r2
+ 1ce:	02 2e       	mov	r0, r18
+ 1d0:	02 c0       	rjmp	.+4      	; 0x1d6 <__stack+0xf7>
+ 1d2:	88 0f       	add	r24, r24
+ 1d4:	99 1f       	adc	r25, r25
+ 1d6:	0a 94       	dec	r0
+ 1d8:	e2 f7       	brpl	.-8      	; 0x1d2 <__stack+0xf3>
+ 1da:	48 2b       	or	r20, r24
+ 1dc:	59 2b       	or	r21, r25
+				}
+
+				TERMO_SCK_HIGH;
+ 1de:	dc 9a       	sbi	0x1b, 4	; 27
+ 1e0:	c3 01       	movw	r24, r6
+ 1e2:	01 97       	sbiw	r24, 0x01	; 1
+ 1e4:	f1 f7       	brne	.-4      	; 0x1e2 <__stack+0x103>
+ 1e6:	21 50       	subi	r18, 0x01	; 1
+ 1e8:	30 40       	sbci	r19, 0x00	; 0
+			temperatureCel = 0;
+			TERMO_CS_LOW;
+
+			_delay_ms(1);
+
+			for(i = 15; i >= 0; i--){
+ 1ea:	8f ef       	ldi	r24, 0xFF	; 255
+ 1ec:	2f 3f       	cpi	r18, 0xFF	; 255
+ 1ee:	38 07       	cpc	r19, r24
+ 1f0:	39 f7       	brne	.-50     	; 0x1c0 <__stack+0xe1>
+ 1f2:	80 ed       	ldi	r24, 0xD0	; 208
+ 1f4:	97 e0       	ldi	r25, 0x07	; 7
+ 1f6:	01 97       	sbiw	r24, 0x01	; 1
+ 1f8:	f1 f7       	brne	.-4      	; 0x1f6 <__stack+0x117>
+
+			}
+
+			_delay_ms(1);
+
+			TERMO_CS_HIGH;
+ 1fa:	d8 9a       	sbi	0x1b, 0	; 27
+
+			//no termocuple attached
+			if(temperatureRaw & 0x4){
+ 1fc:	42 fd       	sbrc	r20, 2
+ 1fe:	02 c0       	rjmp	.+4      	; 0x204 <__stack+0x125>
+ 200:	99 24       	eor	r9, r9
+ 202:	12 c0       	rjmp	.+36     	; 0x228 <__stack+0x149>
+				termoFail++;
+ 204:	93 94       	inc	r9
+			}
+			else{
+				termoFail = 0;
+			}
+
+			if(termoFail == MAX_TERMO_FAIL){
+ 206:	23 e0       	ldi	r18, 0x03	; 3
+ 208:	92 16       	cp	r9, r18
+ 20a:	71 f4       	brne	.+28     	; 0x228 <__stack+0x149>
+								
+				termocoupleOn = 0;
+				LED_ERROR_ON;
+ 20c:	c0 98       	cbi	0x18, 0	; 24
+				LED_TERMO_ON;
+ 20e:	db 98       	cbi	0x1b, 3	; 27
+ 210:	80 e2       	ldi	r24, 0x20	; 32
+ 212:	9e e4       	ldi	r25, 0x4E	; 78
+ 214:	fe 01       	movw	r30, r28
+ 216:	31 97       	sbiw	r30, 0x01	; 1
+ 218:	f1 f7       	brne	.-4      	; 0x216 <__stack+0x137>
+		{
+			// wait 1/10 ms
+			_delay_loop_2(((F_CPU) / 4e3) / 10);
+			__ticks --;
+ 21a:	01 97       	sbiw	r24, 0x01	; 1
+		__ticks = 1;
+	else if (__tmp > 65535)
+	{
+		//	__ticks = requested delay in 1/10 ms
+		__ticks = (uint16_t) (__ms * 10.0);
+		while(__ticks)
+ 21c:	d9 f7       	brne	.-10     	; 0x214 <__stack+0x135>
+				_delay_ms(2000);
+				LED_ERROR_OFF;
+ 21e:	c0 9a       	sbi	0x18, 0	; 24
+				LED_TERMO_OFF;
+ 220:	db 9a       	sbi	0x1b, 3	; 27
+				SET_PWM_A(0);
+ 222:	16 be       	out	0x36, r1	; 54
+ 224:	99 24       	eor	r9, r9
+ 226:	cc 24       	eor	r12, r12
+				termoFail = 0;
+			}
+			
+			temperatureRaw >>= 3;
+ 228:	ca 01       	movw	r24, r20
+ 22a:	33 e0       	ldi	r19, 0x03	; 3
+ 22c:	96 95       	lsr	r25
+ 22e:	87 95       	ror	r24
+ 230:	3a 95       	dec	r19
+ 232:	e1 f7       	brne	.-8      	; 0x22c <__stack+0x14d>
+#if __DEBUG
+			dbg_putchar( (uint8_t)temperatureRaw);
+			dbg_putchar( (uint8_t) temperatureRaw >> 8);
+#endif		
+			//maximum temperature for this scale
+			if(temperatureRaw < 2600 ){
+ 234:	2a e0       	ldi	r18, 0x0A	; 10
+ 236:	88 32       	cpi	r24, 0x28	; 40
+ 238:	92 07       	cpc	r25, r18
+ 23a:	88 f4       	brcc	.+34     	; 0x25e <__stack+0x17f>
+				temperatureCel = (uint16_t)temperatureRaw * (uint16_t)25;
+				//temperature exceed 50 grades
+				if(temperatureCel >= TEMP_START ){
+ 23c:	69 e1       	ldi	r22, 0x19	; 25
+ 23e:	70 e0       	ldi	r23, 0x00	; 0
+ 240:	00 d2       	rcall	.+1024   	; 0x642 <__mulhi3>
+ 242:	8c 57       	subi	r24, 0x7C	; 124
+ 244:	95 41       	sbci	r25, 0x15	; 21
+ 246:	40 f0       	brcs	.+16     	; 0x258 <__stack+0x179>
+					pwm_isOn = 1;
+					SET_PWM_A(u8PwmVals[pwm_lvl]);
+ 248:	ed 2d       	mov	r30, r13
+ 24a:	f0 e0       	ldi	r31, 0x00	; 0
+ 24c:	e0 5a       	subi	r30, 0xA0	; 160
+ 24e:	ff 4f       	sbci	r31, 0xFF	; 255
+ 250:	80 81       	ld	r24, Z
+ 252:	86 bf       	out	0x36, r24	; 54
+ 254:	71 e0       	ldi	r23, 0x01	; 1
+ 256:	04 c0       	rjmp	.+8      	; 0x260 <__stack+0x181>
+				}
+				else{
+					pwm_isOn = 0;
+					SET_PWM_A(0);
+ 258:	16 be       	out	0x36, r1	; 54
+ 25a:	70 e0       	ldi	r23, 0x00	; 0
+ 25c:	01 c0       	rjmp	.+2      	; 0x260 <__stack+0x181>
+				}
+			}
+			else{
+					SET_PWM_A(0);
+ 25e:	16 be       	out	0x36, r1	; 54
+			}
+			
+
+			LED_TERMO_ON;
+ 260:	db 98       	cbi	0x1b, 3	; 27
+ 262:	88 ee       	ldi	r24, 0xE8	; 232
+ 264:	93 e0       	ldi	r25, 0x03	; 3
+ 266:	fe 01       	movw	r30, r28
+ 268:	31 97       	sbiw	r30, 0x01	; 1
+ 26a:	f1 f7       	brne	.-4      	; 0x268 <__stack+0x189>
+		{
+			// wait 1/10 ms
+			_delay_loop_2(((F_CPU) / 4e3) / 10);
+			__ticks --;
+ 26c:	01 97       	sbiw	r24, 0x01	; 1
+		__ticks = 1;
+	else if (__tmp > 65535)
+	{
+		//	__ticks = requested delay in 1/10 ms
+		__ticks = (uint16_t) (__ms * 10.0);
+		while(__ticks)
+ 26e:	d9 f7       	brne	.-10     	; 0x266 <__stack+0x187>
+			_delay_ms(100);
+			LED_TERMO_OFF;
+ 270:	db 9a       	sbi	0x1b, 3	; 27
+			dec_state = IDLE;
+ 272:	10 92 7d 00 	sts	0x007D, r1
+ 276:	51 cf       	rjmp	.-350    	; 0x11a <__stack+0x3b>
+		break;
+
+		case BUTTON_DOWN:
+		{
+
+			if( button_lvl == 0 ){
+ 278:	99 23       	and	r25, r25
+ 27a:	49 f4       	brne	.+18     	; 0x28e <__stack+0x1af>
+				button_count++;
+ 27c:	83 94       	inc	r8
+ 27e:	84 ef       	ldi	r24, 0xF4	; 244
+ 280:	91 e0       	ldi	r25, 0x01	; 1
+ 282:	fe 01       	movw	r30, r28
+ 284:	31 97       	sbiw	r30, 0x01	; 1
+ 286:	f1 f7       	brne	.-4      	; 0x284 <__stack+0x1a5>
+		{
+			// wait 1/10 ms
+			_delay_loop_2(((F_CPU) / 4e3) / 10);
+			__ticks --;
+ 288:	01 97       	sbiw	r24, 0x01	; 1
+		__ticks = 1;
+	else if (__tmp > 65535)
+	{
+		//	__ticks = requested delay in 1/10 ms
+		__ticks = (uint16_t) (__ms * 10.0);
+		while(__ticks)
+ 28a:	d9 f7       	brne	.-10     	; 0x282 <__stack+0x1a3>
+ 28c:	46 cf       	rjmp	.-372    	; 0x11a <__stack+0x3b>
+				_delay_ms(50);
+			}
+			else if( ( button_lvl == 1 ) && ( button_count >= BUTTON_PRES_LONG )){
+ 28e:	8e e0       	ldi	r24, 0x0E	; 14
+ 290:	88 15       	cp	r24, r8
+ 292:	10 f4       	brcc	.+4      	; 0x298 <__stack+0x1b9>
+				dec_state = BUTTON_UP_LONG;
+ 294:	26 e0       	ldi	r18, 0x06	; 6
+ 296:	04 c0       	rjmp	.+8      	; 0x2a0 <__stack+0x1c1>
+			}
+			else if(button_lvl == 1 && button_count >= BUTTON_PRES_SHORT){
+ 298:	82 e0       	ldi	r24, 0x02	; 2
+ 29a:	88 15       	cp	r24, r8
+ 29c:	50 f7       	brcc	.-44     	; 0x272 <__stack+0x193>
+				dec_state = BUTTON_UP_SHORT;
+ 29e:	25 e0       	ldi	r18, 0x05	; 5
+ 2a0:	20 93 7d 00 	sts	0x007D, r18
+ 2a4:	3a cf       	rjmp	.-396    	; 0x11a <__stack+0x3b>
+
+		}
+		break;
+
+		case BUTTON_UP_SHORT:
+					if( ( ((uint8_t)pwm_lvl + PWM_INC) < (uint8_t)PWM_MAX)){
+ 2a6:	8d 2d       	mov	r24, r13
+ 2a8:	90 e0       	ldi	r25, 0x00	; 0
+ 2aa:	02 97       	sbiw	r24, 0x02	; 2
+ 2ac:	14 f0       	brlt	.+4      	; 0x2b2 <__stack+0x1d3>
+ 2ae:	dd 24       	eor	r13, r13
+ 2b0:	01 c0       	rjmp	.+2      	; 0x2b4 <__stack+0x1d5>
+						pwm_lvl += PWM_INC;				
+ 2b2:	d3 94       	inc	r13
+					else{
+						pwm_lvl = 0;				
+
+					}
+
+					if(pwm_isOn){
+ 2b4:	77 23       	and	r23, r23
+ 2b6:	31 f0       	breq	.+12     	; 0x2c4 <__stack+0x1e5>
+						SET_PWM_A(u8PwmVals[pwm_lvl]);
+ 2b8:	ed 2d       	mov	r30, r13
+ 2ba:	f0 e0       	ldi	r31, 0x00	; 0
+ 2bc:	e0 5a       	subi	r30, 0xA0	; 160
+ 2be:	ff 4f       	sbci	r31, 0xFF	; 255
+ 2c0:	80 81       	ld	r24, Z
+ 2c2:	86 bf       	out	0x36, r24	; 54
+					}
+					
+					LED_STATUS_ON;
+ 2c4:	c1 98       	cbi	0x18, 1	; 24
+ 2c6:	88 ee       	ldi	r24, 0xE8	; 232
+ 2c8:	93 e0       	ldi	r25, 0x03	; 3
+ 2ca:	fe 01       	movw	r30, r28
+ 2cc:	31 97       	sbiw	r30, 0x01	; 1
+ 2ce:	f1 f7       	brne	.-4      	; 0x2cc <__stack+0x1ed>
+		{
+			// wait 1/10 ms
+			_delay_loop_2(((F_CPU) / 4e3) / 10);
+			__ticks --;
+ 2d0:	01 97       	sbiw	r24, 0x01	; 1
+		__ticks = 1;
+	else if (__tmp > 65535)
+	{
+		//	__ticks = requested delay in 1/10 ms
+		__ticks = (uint16_t) (__ms * 10.0);
+		while(__ticks)
+ 2d2:	d9 f7       	brne	.-10     	; 0x2ca <__stack+0x1eb>
+ 2d4:	84 c1       	rjmp	.+776    	; 0x5de <__stack+0x4ff>
+			
+
+		break;
+
+		case BUTTON_UP_LONG:
+					pwm_isOn ^= 0x1;
+ 2d6:	75 25       	eor	r23, r5
+					termocoupleOn = 0;
+
+					if(pwm_isOn){
+ 2d8:	19 f0       	breq	.+6      	; 0x2e0 <__stack+0x201>
+							SET_PWM_A(u8PwmVals[0]);
+ 2da:	46 be       	out	0x36, r4	; 54
+ 2dc:	dd 24       	eor	r13, r13
+ 2de:	01 c0       	rjmp	.+2      	; 0x2e2 <__stack+0x203>
+							pwm_lvl = 0;
+
+					}
+					else{
+						SET_PWM_A(0);
+ 2e0:	16 be       	out	0x36, r1	; 54
+					}
+
+					LED_STATUS_ON;
+ 2e2:	c1 98       	cbi	0x18, 1	; 24
+ 2e4:	88 ee       	ldi	r24, 0xE8	; 232
+ 2e6:	93 e0       	ldi	r25, 0x03	; 3
+ 2e8:	fe 01       	movw	r30, r28
+ 2ea:	31 97       	sbiw	r30, 0x01	; 1
+ 2ec:	f1 f7       	brne	.-4      	; 0x2ea <__stack+0x20b>
+		{
+			// wait 1/10 ms
+			_delay_loop_2(((F_CPU) / 4e3) / 10);
+			__ticks --;
+ 2ee:	01 97       	sbiw	r24, 0x01	; 1
+		__ticks = 1;
+	else if (__tmp > 65535)
+	{
+		//	__ticks = requested delay in 1/10 ms
+		__ticks = (uint16_t) (__ms * 10.0);
+		while(__ticks)
+ 2f0:	d9 f7       	brne	.-10     	; 0x2e8 <__stack+0x209>
+					_delay_ms(100);
+					LED_STATUS_OFF;
+ 2f2:	c1 9a       	sbi	0x18, 1	; 24
+					dec_state = IDLE;
+ 2f4:	10 92 7d 00 	sts	0x007D, r1
+ 2f8:	cc 24       	eor	r12, r12
+ 2fa:	0f cf       	rjmp	.-482    	; 0x11a <__stack+0x3b>
+		break;
+
+		case CHECK_SIG:
+		{
+			
+			if(sig_lvl == 0){
+ 2fc:	80 91 80 00 	lds	r24, 0x0080
+ 300:	88 23       	and	r24, r24
+ 302:	51 f4       	brne	.+20     	; 0x318 <__stack+0x239>
+				hold_counter++;
+ 304:	80 91 7e 00 	lds	r24, 0x007E
+ 308:	90 91 7f 00 	lds	r25, 0x007F
+ 30c:	01 96       	adiw	r24, 0x01	; 1
+ 30e:	90 93 7f 00 	sts	0x007F, r25
+ 312:	80 93 7e 00 	sts	0x007E, r24
+ 316:	06 c0       	rjmp	.+12     	; 0x324 <__stack+0x245>
+			}
+			else{
+				dec_state = IDLE;
+ 318:	10 92 7d 00 	sts	0x007D, r1
+				hold_counter = 0;
+ 31c:	10 92 7f 00 	sts	0x007F, r1
+ 320:	10 92 7e 00 	sts	0x007E, r1
+			}
+			
+			if(hold_counter == START_DEC_THRESHOLD){
+ 324:	80 91 7e 00 	lds	r24, 0x007E
+ 328:	90 91 7f 00 	lds	r25, 0x007F
+ 32c:	c2 97       	sbiw	r24, 0x32	; 50
+ 32e:	09 f0       	breq	.+2      	; 0x332 <__stack+0x253>
+ 330:	f4 ce       	rjmp	.-536    	; 0x11a <__stack+0x3b>
+				dec_state = START_RCV;
+ 332:	81 e0       	ldi	r24, 0x01	; 1
+ 334:	80 93 7d 00 	sts	0x007D, r24
+				
+				hold_counter = 0;
+ 338:	10 92 7f 00 	sts	0x007F, r1
+ 33c:	10 92 7e 00 	sts	0x007E, r1
+				sig_lvl = 0;
+ 340:	10 92 80 00 	sts	0x0080, r1
+				idx = 0;
+ 344:	10 92 82 00 	sts	0x0082, r1
+ 348:	e8 ce       	rjmp	.-560    	; 0x11a <__stack+0x3b>
+
+		case START_RCV:
+		{
+		while(idx < 64){
+		
+			sig_lvl = GET_DEC_LVL;
+ 34a:	89 b3       	in	r24, 0x19	; 25
+ 34c:	90 e0       	ldi	r25, 0x00	; 0
+ 34e:	82 70       	andi	r24, 0x02	; 2
+ 350:	90 70       	andi	r25, 0x00	; 0
+ 352:	96 95       	lsr	r25
+ 354:	87 95       	ror	r24
+ 356:	80 93 80 00 	sts	0x0080, r24
+
+			if((sig_lvl != sig_lvl_prev)  || (hold_counter == 5000)){
+ 35a:	90 91 80 00 	lds	r25, 0x0080
+ 35e:	80 91 81 00 	lds	r24, 0x0081
+ 362:	98 17       	cp	r25, r24
+ 364:	39 f4       	brne	.+14     	; 0x374 <__stack+0x295>
+ 366:	80 91 7e 00 	lds	r24, 0x007E
+ 36a:	90 91 7f 00 	lds	r25, 0x007F
+ 36e:	88 58       	subi	r24, 0x88	; 136
+ 370:	93 41       	sbci	r25, 0x13	; 19
+ 372:	21 f5       	brne	.+72     	; 0x3bc <__stack+0x2dd>
+
+			
+		
+					if( hold_counter > 5000 ){
+ 374:	80 91 7e 00 	lds	r24, 0x007E
+ 378:	90 91 7f 00 	lds	r25, 0x007F
+ 37c:	89 58       	subi	r24, 0x89	; 137
+ 37e:	93 41       	sbci	r25, 0x13	; 19
+ 380:	70 f4       	brcc	.+28     	; 0x39e <__stack+0x2bf>
+				
+						signal_periods[idx] = 0;
+					}
+					else if( (hold_counter > 200) ){// && (hold_counter <= THOMSON_REPEAT_THR) ){
+ 382:	80 91 7e 00 	lds	r24, 0x007E
+ 386:	90 91 7f 00 	lds	r25, 0x007F
+ 38a:	89 3c       	cpi	r24, 0xC9	; 201
+ 38c:	91 05       	cpc	r25, r1
+ 38e:	38 f0       	brcs	.+14     	; 0x39e <__stack+0x2bf>
+						signal_periods[idx] = 1;
+ 390:	e0 91 82 00 	lds	r30, 0x0082
+ 394:	f0 e0       	ldi	r31, 0x00	; 0
+ 396:	ed 57       	subi	r30, 0x7D	; 125
+ 398:	ff 4f       	sbci	r31, 0xFF	; 255
+ 39a:	50 82       	st	Z, r5
+ 39c:	06 c0       	rjmp	.+12     	; 0x3aa <__stack+0x2cb>
+					}
+					else{
+						signal_periods[idx] = 0;
+ 39e:	e0 91 82 00 	lds	r30, 0x0082
+ 3a2:	f0 e0       	ldi	r31, 0x00	; 0
+ 3a4:	ed 57       	subi	r30, 0x7D	; 125
+ 3a6:	ff 4f       	sbci	r31, 0xFF	; 255
+ 3a8:	10 82       	st	Z, r1
+					}
+			
+		
+
+				idx++;
+ 3aa:	80 91 82 00 	lds	r24, 0x0082
+ 3ae:	8f 5f       	subi	r24, 0xFF	; 255
+ 3b0:	80 93 82 00 	sts	0x0082, r24
+				hold_counter = 0;
+ 3b4:	10 92 7f 00 	sts	0x007F, r1
+ 3b8:	10 92 7e 00 	sts	0x007E, r1
+			}
+		
+			hold_counter++;
+ 3bc:	80 91 7e 00 	lds	r24, 0x007E
+ 3c0:	90 91 7f 00 	lds	r25, 0x007F
+ 3c4:	01 96       	adiw	r24, 0x01	; 1
+ 3c6:	90 93 7f 00 	sts	0x007F, r25
+ 3ca:	80 93 7e 00 	sts	0x007E, r24
+			sig_lvl_prev = sig_lvl;
+ 3ce:	80 91 80 00 	lds	r24, 0x0080
+ 3d2:	80 93 81 00 	sts	0x0081, r24
+		}	
+		break;
+
+		case START_RCV:
+		{
+		while(idx < 64){
+ 3d6:	80 91 82 00 	lds	r24, 0x0082
+ 3da:	80 34       	cpi	r24, 0x40	; 64
+ 3dc:	08 f4       	brcc	.+2      	; 0x3e0 <__stack+0x301>
+ 3de:	b5 cf       	rjmp	.-150    	; 0x34a <__stack+0x26b>
+			sig_lvl_prev = sig_lvl;
+
+
+		}
+
+		dec_state = DECODE_MSG;
+ 3e0:	82 e0       	ldi	r24, 0x02	; 2
+ 3e2:	80 93 7d 00 	sts	0x007D, r24
+ 3e6:	99 ce       	rjmp	.-718    	; 0x11a <__stack+0x3b>
+		
+		signal_code = 0;
+		signal_code2 = 0;
+		signal_shifter = 0;
+
+		for(idx = 0; idx < 64; idx++){
+ 3e8:	10 92 82 00 	sts	0x0082, r1
+ 3ec:	60 e0       	ldi	r22, 0x00	; 0
+ 3ee:	ee 24       	eor	r14, r14
+ 3f0:	ff 24       	eor	r15, r15
+ 3f2:	87 01       	movw	r16, r14
+ 3f4:	20 e0       	ldi	r18, 0x00	; 0
+ 3f6:	30 e0       	ldi	r19, 0x00	; 0
+ 3f8:	40 e0       	ldi	r20, 0x00	; 0
+ 3fa:	50 e0       	ldi	r21, 0x00	; 0
+ 3fc:	50 c0       	rjmp	.+160    	; 0x49e <__stack+0x3bf>
+			if(idx < 32){
+ 3fe:	80 91 82 00 	lds	r24, 0x0082
+ 402:	80 32       	cpi	r24, 0x20	; 32
+ 404:	b0 f4       	brcc	.+44     	; 0x432 <__stack+0x353>
+				signal_code |= signal_periods[idx] << signal_shifter;
+ 406:	e0 91 82 00 	lds	r30, 0x0082
+ 40a:	f0 e0       	ldi	r31, 0x00	; 0
+ 40c:	ed 57       	subi	r30, 0x7D	; 125
+ 40e:	ff 4f       	sbci	r31, 0xFF	; 255
+ 410:	80 81       	ld	r24, Z
+ 412:	90 e0       	ldi	r25, 0x00	; 0
+ 414:	06 2e       	mov	r0, r22
+ 416:	02 c0       	rjmp	.+4      	; 0x41c <__stack+0x33d>
+ 418:	88 0f       	add	r24, r24
+ 41a:	99 1f       	adc	r25, r25
+ 41c:	0a 94       	dec	r0
+ 41e:	e2 f7       	brpl	.-8      	; 0x418 <__stack+0x339>
+ 420:	aa 27       	eor	r26, r26
+ 422:	97 fd       	sbrc	r25, 7
+ 424:	a0 95       	com	r26
+ 426:	ba 2f       	mov	r27, r26
+ 428:	e8 2a       	or	r14, r24
+ 42a:	f9 2a       	or	r15, r25
+ 42c:	0a 2b       	or	r16, r26
+ 42e:	1b 2b       	or	r17, r27
+ 430:	2a c0       	rjmp	.+84     	; 0x486 <__stack+0x3a7>
+				signal_shifter++;
+
+			}
+			else if( idx == 32){
+ 432:	80 91 82 00 	lds	r24, 0x0082
+ 436:	80 32       	cpi	r24, 0x20	; 32
+ 438:	89 f4       	brne	.+34     	; 0x45c <__stack+0x37d>
+				signal_shifter = 0;
+				signal_code2 |= signal_periods[idx] << signal_shifter;
+ 43a:	e0 91 82 00 	lds	r30, 0x0082
+ 43e:	f0 e0       	ldi	r31, 0x00	; 0
+ 440:	ed 57       	subi	r30, 0x7D	; 125
+ 442:	ff 4f       	sbci	r31, 0xFF	; 255
+ 444:	80 81       	ld	r24, Z
+ 446:	90 e0       	ldi	r25, 0x00	; 0
+ 448:	aa 27       	eor	r26, r26
+ 44a:	97 fd       	sbrc	r25, 7
+ 44c:	a0 95       	com	r26
+ 44e:	ba 2f       	mov	r27, r26
+ 450:	28 2b       	or	r18, r24
+ 452:	39 2b       	or	r19, r25
+ 454:	4a 2b       	or	r20, r26
+ 456:	5b 2b       	or	r21, r27
+ 458:	60 e0       	ldi	r22, 0x00	; 0
+ 45a:	16 c0       	rjmp	.+44     	; 0x488 <__stack+0x3a9>
+			}
+			else{
+				signal_code2 |= signal_periods[idx] << signal_shifter;
+ 45c:	e0 91 82 00 	lds	r30, 0x0082
+ 460:	f0 e0       	ldi	r31, 0x00	; 0
+ 462:	ed 57       	subi	r30, 0x7D	; 125
+ 464:	ff 4f       	sbci	r31, 0xFF	; 255
+ 466:	80 81       	ld	r24, Z
+ 468:	90 e0       	ldi	r25, 0x00	; 0
+ 46a:	06 2e       	mov	r0, r22
+ 46c:	02 c0       	rjmp	.+4      	; 0x472 <__stack+0x393>
+ 46e:	88 0f       	add	r24, r24
+ 470:	99 1f       	adc	r25, r25
+ 472:	0a 94       	dec	r0
+ 474:	e2 f7       	brpl	.-8      	; 0x46e <__stack+0x38f>
+ 476:	aa 27       	eor	r26, r26
+ 478:	97 fd       	sbrc	r25, 7
+ 47a:	a0 95       	com	r26
+ 47c:	ba 2f       	mov	r27, r26
+ 47e:	28 2b       	or	r18, r24
+ 480:	39 2b       	or	r19, r25
+ 482:	4a 2b       	or	r20, r26
+ 484:	5b 2b       	or	r21, r27
+				signal_shifter++;
+ 486:	6f 5f       	subi	r22, 0xFF	; 255
+			}
+			
+			signal_periods[idx] = 0;
+ 488:	e0 91 82 00 	lds	r30, 0x0082
+ 48c:	f0 e0       	ldi	r31, 0x00	; 0
+ 48e:	ed 57       	subi	r30, 0x7D	; 125
+ 490:	ff 4f       	sbci	r31, 0xFF	; 255
+ 492:	10 82       	st	Z, r1
+		
+		signal_code = 0;
+		signal_code2 = 0;
+		signal_shifter = 0;
+
+		for(idx = 0; idx < 64; idx++){
+ 494:	80 91 82 00 	lds	r24, 0x0082
+ 498:	8f 5f       	subi	r24, 0xFF	; 255
+ 49a:	80 93 82 00 	sts	0x0082, r24
+ 49e:	80 91 82 00 	lds	r24, 0x0082
+ 4a2:	80 34       	cpi	r24, 0x40	; 64
+ 4a4:	08 f4       	brcc	.+2      	; 0x4a8 <__stack+0x3c9>
+ 4a6:	ab cf       	rjmp	.-170    	; 0x3fe <__stack+0x31f>
+		dbg_putchar( (uint8_t)(signal_code2 >> 16 ));
+		dbg_putchar( (uint8_t)(signal_code2 >> 24 ));
+#endif
+		
+		
+		if( ( signal_code == CODE_NS_VERIFY ) || ( signal_code == CODE_SH_VERIFY ) )
+ 4a8:	83 e0       	ldi	r24, 0x03	; 3
+ 4aa:	e8 16       	cp	r14, r24
+ 4ac:	f1 04       	cpc	r15, r1
+ 4ae:	01 05       	cpc	r16, r1
+ 4b0:	11 05       	cpc	r17, r1
+ 4b2:	39 f0       	breq	.+14     	; 0x4c2 <__stack+0x3e3>
+ 4b4:	86 e0       	ldi	r24, 0x06	; 6
+ 4b6:	e8 16       	cp	r14, r24
+ 4b8:	f1 04       	cpc	r15, r1
+ 4ba:	01 05       	cpc	r16, r1
+ 4bc:	11 05       	cpc	r17, r1
+ 4be:	09 f0       	breq	.+2      	; 0x4c2 <__stack+0x3e3>
+ 4c0:	d8 ce       	rjmp	.-592    	; 0x272 <__stack+0x193>
+		{
+			switch(signal_code2){
+ 4c2:	21 31       	cpi	r18, 0x11	; 17
+ 4c4:	84 e0       	ldi	r24, 0x04	; 4
+ 4c6:	38 07       	cpc	r19, r24
+ 4c8:	80 e0       	ldi	r24, 0x00	; 0
+ 4ca:	48 07       	cpc	r20, r24
+ 4cc:	80 e0       	ldi	r24, 0x00	; 0
+ 4ce:	58 07       	cpc	r21, r24
+ 4d0:	09 f4       	brne	.+2      	; 0x4d4 <__stack+0x3f5>
+ 4d2:	52 c0       	rjmp	.+164    	; 0x578 <__stack+0x499>
+ 4d4:	22 31       	cpi	r18, 0x12	; 18
+ 4d6:	84 e0       	ldi	r24, 0x04	; 4
+ 4d8:	38 07       	cpc	r19, r24
+ 4da:	80 e0       	ldi	r24, 0x00	; 0
+ 4dc:	48 07       	cpc	r20, r24
+ 4de:	80 e0       	ldi	r24, 0x00	; 0
+ 4e0:	58 07       	cpc	r21, r24
+ 4e2:	90 f4       	brcc	.+36     	; 0x508 <__stack+0x429>
+ 4e4:	21 30       	cpi	r18, 0x01	; 1
+ 4e6:	31 05       	cpc	r19, r1
+ 4e8:	41 05       	cpc	r20, r1
+ 4ea:	51 05       	cpc	r21, r1
+ 4ec:	08 f4       	brcc	.+2      	; 0x4f0 <__stack+0x411>
+ 4ee:	79 c0       	rjmp	.+242    	; 0x5e2 <__stack+0x503>
+ 4f0:	23 30       	cpi	r18, 0x03	; 3
+ 4f2:	31 05       	cpc	r19, r1
+ 4f4:	41 05       	cpc	r20, r1
+ 4f6:	51 05       	cpc	r21, r1
+ 4f8:	70 f1       	brcs	.+92     	; 0x556 <__stack+0x477>
+ 4fa:	21 50       	subi	r18, 0x01	; 1
+ 4fc:	34 40       	sbci	r19, 0x04	; 4
+ 4fe:	40 40       	sbci	r20, 0x00	; 0
+ 500:	50 40       	sbci	r21, 0x00	; 0
+ 502:	09 f0       	breq	.+2      	; 0x506 <__stack+0x427>
+ 504:	6e c0       	rjmp	.+220    	; 0x5e2 <__stack+0x503>
+ 506:	4e c0       	rjmp	.+156    	; 0x5a4 <__stack+0x4c5>
+ 508:	22 30       	cpi	r18, 0x02	; 2
+ 50a:	88 e0       	ldi	r24, 0x08	; 8
+ 50c:	38 07       	cpc	r19, r24
+ 50e:	80 e0       	ldi	r24, 0x00	; 0
+ 510:	48 07       	cpc	r20, r24
+ 512:	80 e0       	ldi	r24, 0x00	; 0
+ 514:	58 07       	cpc	r21, r24
+ 516:	09 f4       	brne	.+2      	; 0x51a <__stack+0x43b>
+ 518:	45 c0       	rjmp	.+138    	; 0x5a4 <__stack+0x4c5>
+ 51a:	23 30       	cpi	r18, 0x03	; 3
+ 51c:	88 e0       	ldi	r24, 0x08	; 8
+ 51e:	38 07       	cpc	r19, r24
+ 520:	80 e0       	ldi	r24, 0x00	; 0
+ 522:	48 07       	cpc	r20, r24
+ 524:	80 e0       	ldi	r24, 0x00	; 0
+ 526:	58 07       	cpc	r21, r24
+ 528:	38 f4       	brcc	.+14     	; 0x538 <__stack+0x459>
+ 52a:	21 51       	subi	r18, 0x11	; 17
+ 52c:	35 40       	sbci	r19, 0x05	; 5
+ 52e:	40 40       	sbci	r20, 0x00	; 0
+ 530:	50 40       	sbci	r21, 0x00	; 0
+ 532:	09 f0       	breq	.+2      	; 0x536 <__stack+0x457>
+ 534:	56 c0       	rjmp	.+172    	; 0x5e2 <__stack+0x503>
+ 536:	4a c0       	rjmp	.+148    	; 0x5cc <__stack+0x4ed>
+ 538:	22 32       	cpi	r18, 0x22	; 34
+ 53a:	88 e0       	ldi	r24, 0x08	; 8
+ 53c:	38 07       	cpc	r19, r24
+ 53e:	80 e0       	ldi	r24, 0x00	; 0
+ 540:	48 07       	cpc	r20, r24
+ 542:	80 e0       	ldi	r24, 0x00	; 0
+ 544:	58 07       	cpc	r21, r24
+ 546:	c1 f0       	breq	.+48     	; 0x578 <__stack+0x499>
+ 548:	22 52       	subi	r18, 0x22	; 34
+ 54a:	3a 40       	sbci	r19, 0x0A	; 10
+ 54c:	40 40       	sbci	r20, 0x00	; 0
+ 54e:	50 40       	sbci	r21, 0x00	; 0
+ 550:	09 f0       	breq	.+2      	; 0x554 <__stack+0x475>
+ 552:	47 c0       	rjmp	.+142    	; 0x5e2 <__stack+0x503>
+ 554:	3b c0       	rjmp	.+118    	; 0x5cc <__stack+0x4ed>
+				case CODE_NS_TURN_ON:
+				case CODE_SH_TURN_ON:
+
+					pwm_isOn ^= 0x1;
+ 556:	75 25       	eor	r23, r5
+					termocoupleOn = 0;
+
+					if(pwm_isOn){
+ 558:	19 f0       	breq	.+6      	; 0x560 <__stack+0x481>
+							SET_PWM_A(u8PwmVals[0]);
+ 55a:	46 be       	out	0x36, r4	; 54
+ 55c:	dd 24       	eor	r13, r13
+ 55e:	01 c0       	rjmp	.+2      	; 0x562 <__stack+0x483>
+							pwm_lvl = 0;
+
+					}
+					else{
+						SET_PWM_A(0);
+ 560:	16 be       	out	0x36, r1	; 54
+					}
+
+					LED_STATUS_ON;
+ 562:	c1 98       	cbi	0x18, 1	; 24
+ 564:	88 ee       	ldi	r24, 0xE8	; 232
+ 566:	93 e0       	ldi	r25, 0x03	; 3
+ 568:	fe 01       	movw	r30, r28
+ 56a:	31 97       	sbiw	r30, 0x01	; 1
+ 56c:	f1 f7       	brne	.-4      	; 0x56a <__stack+0x48b>
+		{
+			// wait 1/10 ms
+			_delay_loop_2(((F_CPU) / 4e3) / 10);
+			__ticks --;
+ 56e:	01 97       	sbiw	r24, 0x01	; 1
+		__ticks = 1;
+	else if (__tmp > 65535)
+	{
+		//	__ticks = requested delay in 1/10 ms
+		__ticks = (uint16_t) (__ms * 10.0);
+		while(__ticks)
+ 570:	d9 f7       	brne	.-10     	; 0x568 <__stack+0x489>
+					_delay_ms(100);
+					LED_STATUS_OFF;
+ 572:	c1 9a       	sbi	0x18, 1	; 24
+ 574:	cc 24       	eor	r12, r12
+ 576:	7d ce       	rjmp	.-774    	; 0x272 <__stack+0x193>
+				case CODE_NS_INCREASE:
+				case CODE_SH_INCREASE:
+
+
+
+					if( ( ((uint8_t)pwm_lvl + PWM_INC) < (uint8_t)PWM_MAX) && pwm_isOn){
+ 578:	8d 2d       	mov	r24, r13
+ 57a:	90 e0       	ldi	r25, 0x00	; 0
+ 57c:	02 97       	sbiw	r24, 0x02	; 2
+ 57e:	4c f4       	brge	.+18     	; 0x592 <__stack+0x4b3>
+ 580:	77 23       	and	r23, r23
+ 582:	39 f0       	breq	.+14     	; 0x592 <__stack+0x4b3>
+						pwm_lvl += PWM_INC;				
+ 584:	d3 94       	inc	r13
+						SET_PWM_A(u8PwmVals[pwm_lvl]);
+ 586:	ed 2d       	mov	r30, r13
+ 588:	f0 e0       	ldi	r31, 0x00	; 0
+ 58a:	e0 5a       	subi	r30, 0xA0	; 160
+ 58c:	ff 4f       	sbci	r31, 0xFF	; 255
+ 58e:	80 81       	ld	r24, Z
+ 590:	86 bf       	out	0x36, r24	; 54
+
+					}
+
+					
+					LED_STATUS_ON;
+ 592:	c1 98       	cbi	0x18, 1	; 24
+ 594:	88 ee       	ldi	r24, 0xE8	; 232
+ 596:	93 e0       	ldi	r25, 0x03	; 3
+ 598:	fe 01       	movw	r30, r28
+ 59a:	31 97       	sbiw	r30, 0x01	; 1
+ 59c:	f1 f7       	brne	.-4      	; 0x59a <__stack+0x4bb>
+		{
+			// wait 1/10 ms
+			_delay_loop_2(((F_CPU) / 4e3) / 10);
+			__ticks --;
+ 59e:	01 97       	sbiw	r24, 0x01	; 1
+		__ticks = 1;
+	else if (__tmp > 65535)
+	{
+		//	__ticks = requested delay in 1/10 ms
+		__ticks = (uint16_t) (__ms * 10.0);
+		while(__ticks)
+ 5a0:	d9 f7       	brne	.-10     	; 0x598 <__stack+0x4b9>
+ 5a2:	1d c0       	rjmp	.+58     	; 0x5de <__stack+0x4ff>
+				break;
+
+				case CODE_NS_DECREASE:
+				case CODE_SH_DECREASE:
+
+					if( ( (int8_t)pwm_lvl - (int8_t)PWM_INC >= 0 ) && pwm_isOn){
+ 5a4:	1d 14       	cp	r1, r13
+ 5a6:	4c f4       	brge	.+18     	; 0x5ba <__stack+0x4db>
+ 5a8:	77 23       	and	r23, r23
+ 5aa:	39 f0       	breq	.+14     	; 0x5ba <__stack+0x4db>
+						pwm_lvl -= PWM_INC;
+ 5ac:	da 94       	dec	r13
+						SET_PWM_A(u8PwmVals[pwm_lvl]);
+ 5ae:	ed 2d       	mov	r30, r13
+ 5b0:	f0 e0       	ldi	r31, 0x00	; 0
+ 5b2:	e0 5a       	subi	r30, 0xA0	; 160
+ 5b4:	ff 4f       	sbci	r31, 0xFF	; 255
+ 5b6:	80 81       	ld	r24, Z
+ 5b8:	86 bf       	out	0x36, r24	; 54
+
+					}
+
+					LED_STATUS_ON;
+ 5ba:	c1 98       	cbi	0x18, 1	; 24
+ 5bc:	88 ee       	ldi	r24, 0xE8	; 232
+ 5be:	93 e0       	ldi	r25, 0x03	; 3
+ 5c0:	fe 01       	movw	r30, r28
+ 5c2:	31 97       	sbiw	r30, 0x01	; 1
+ 5c4:	f1 f7       	brne	.-4      	; 0x5c2 <__stack+0x4e3>
+		{
+			// wait 1/10 ms
+			_delay_loop_2(((F_CPU) / 4e3) / 10);
+			__ticks --;
+ 5c6:	01 97       	sbiw	r24, 0x01	; 1
+		__ticks = 1;
+	else if (__tmp > 65535)
+	{
+		//	__ticks = requested delay in 1/10 ms
+		__ticks = (uint16_t) (__ms * 10.0);
+		while(__ticks)
+ 5c8:	d9 f7       	brne	.-10     	; 0x5c0 <__stack+0x4e1>
+ 5ca:	09 c0       	rjmp	.+18     	; 0x5de <__stack+0x4ff>
+				break;
+
+				case CODE_NS_TERMO:
+				case CODE_SH_TERMO:
+
+					termocoupleOn ^= 1;
+ 5cc:	c5 24       	eor	r12, r5
+
+					LED_STATUS_ON;
+ 5ce:	c1 98       	cbi	0x18, 1	; 24
+ 5d0:	88 ee       	ldi	r24, 0xE8	; 232
+ 5d2:	93 e0       	ldi	r25, 0x03	; 3
+ 5d4:	fe 01       	movw	r30, r28
+ 5d6:	31 97       	sbiw	r30, 0x01	; 1
+ 5d8:	f1 f7       	brne	.-4      	; 0x5d6 <__stack+0x4f7>
+		{
+			// wait 1/10 ms
+			_delay_loop_2(((F_CPU) / 4e3) / 10);
+			__ticks --;
+ 5da:	01 97       	sbiw	r24, 0x01	; 1
+		__ticks = 1;
+	else if (__tmp > 65535)
+	{
+		//	__ticks = requested delay in 1/10 ms
+		__ticks = (uint16_t) (__ms * 10.0);
+		while(__ticks)
+ 5dc:	d9 f7       	brne	.-10     	; 0x5d4 <__stack+0x4f5>
+					_delay_ms(100);
+					LED_STATUS_OFF;	
+ 5de:	c1 9a       	sbi	0x18, 1	; 24
+ 5e0:	48 ce       	rjmp	.-880    	; 0x272 <__stack+0x193>
+					
+				break;	
+
+				default:
+
+					LED_ERROR_ON;
+ 5e2:	c0 98       	cbi	0x18, 0	; 24
+ 5e4:	88 ee       	ldi	r24, 0xE8	; 232
+ 5e6:	93 e0       	ldi	r25, 0x03	; 3
+ 5e8:	fe 01       	movw	r30, r28
+ 5ea:	31 97       	sbiw	r30, 0x01	; 1
+ 5ec:	f1 f7       	brne	.-4      	; 0x5ea <__stack+0x50b>
+		{
+			// wait 1/10 ms
+			_delay_loop_2(((F_CPU) / 4e3) / 10);
+			__ticks --;
+ 5ee:	01 97       	sbiw	r24, 0x01	; 1
+		__ticks = 1;
+	else if (__tmp > 65535)
+	{
+		//	__ticks = requested delay in 1/10 ms
+		__ticks = (uint16_t) (__ms * 10.0);
+		while(__ticks)
+ 5f0:	d9 f7       	brne	.-10     	; 0x5e8 <__stack+0x509>
+					_delay_ms(100);
+					LED_ERROR_OFF;
+ 5f2:	c0 9a       	sbi	0x18, 0	; 24
+ 5f4:	3e ce       	rjmp	.-900    	; 0x272 <__stack+0x193>
+
+000005f6 <dbg_putchar>:
+#include "dbg_putchar.h"
+
+#if DBG_UART_ENABLE
+
+void dbg_putchar(uint8_t c)
+{
+ 5f6:	28 2f       	mov	r18, r24
+#define DBG_UART_TX_NUM_ADD_NOP		((F_CPU/DBG_UART_BAUDRATE-16)%4)
+	uint8_t sreg;
+	uint16_t tmp;
+	uint8_t numiter = 10;
+
+	sreg = SREG;
+ 5f8:	8f b7       	in	r24, 0x3f	; 63
+	cli();
+ 5fa:	f8 94       	cli
+
+	asm volatile (
+ 5fc:	9a e0       	ldi	r25, 0x0A	; 10
+ 5fe:	eb b3       	in	r30, 0x1b	; 27
+ 600:	ef 7b       	andi	r30, 0xBF	; 191
+ 602:	eb bb       	out	0x1b, r30	; 27
+	...
+ 60c:	00 00       	nop
+ 60e:	ed ec       	ldi	r30, 0xCD	; 205
+ 610:	f0 e0       	ldi	r31, 0x00	; 0
+ 612:	31 97       	sbiw	r30, 0x01	; 1
+ 614:	f1 f7       	brne	.-4      	; 0x612 <dbg_putchar+0x1c>
+ 616:	00 00       	nop
+ 618:	eb b3       	in	r30, 0x1b	; 27
+ 61a:	20 fd       	sbrc	r18, 0
+ 61c:	e0 64       	ori	r30, 0x40	; 64
+ 61e:	20 ff       	sbrs	r18, 0
+ 620:	ef 7b       	andi	r30, 0xBF	; 191
+ 622:	eb bb       	out	0x1b, r30	; 27
+ 624:	08 94       	sec
+ 626:	27 95       	ror	r18
+ 628:	9a 95       	dec	r25
+ 62a:	89 f7       	brne	.-30     	; 0x60e <dbg_putchar+0x18>
+		  "M" (1<<DBG_UART_TX_PIN),
+		  "i" (DBG_UART_TX_NUM_DELAY_CYCLES),
+		  "1" (c),			/* data */
+		  "2" (numiter)
+	);
+	SREG = sreg;
+ 62c:	8f bf       	out	0x3f, r24	; 63
+}
+ 62e:	08 95       	ret
+
+00000630 <at24_pwmInit>:
+
+
+void at24_pwmInit()
+{
+	
+	TCCR0A |= (0x1 << COM0A1) | (0x1 << COM0B1) | (0x1 << WGM00);
+ 630:	80 b7       	in	r24, 0x30	; 48
+ 632:	81 6a       	ori	r24, 0xA1	; 161
+ 634:	80 bf       	out	0x30, r24	; 48
+	
+	TCCR0B |= (0x1 << CS01); // 8 div
+ 636:	83 b7       	in	r24, 0x33	; 51
+ 638:	82 60       	ori	r24, 0x02	; 2
+ 63a:	83 bf       	out	0x33, r24	; 51
+	
+	
+	DDRA |= (0x1 << PINA7);
+ 63c:	d7 9a       	sbi	0x1a, 7	; 26
+	DDRB |= (0x1 << PINB2);
+ 63e:	ba 9a       	sbi	0x17, 2	; 23
+	
+}
+ 640:	08 95       	ret
+
+00000642 <__mulhi3>:
+ 642:	55 27       	eor	r21, r21
+ 644:	00 24       	eor	r0, r0
+
+00000646 <__mulhi3_loop>:
+ 646:	80 ff       	sbrs	r24, 0
+ 648:	02 c0       	rjmp	.+4      	; 0x64e <__mulhi3_skip1>
+ 64a:	06 0e       	add	r0, r22
+ 64c:	57 1f       	adc	r21, r23
+
+0000064e <__mulhi3_skip1>:
+ 64e:	66 0f       	add	r22, r22
+ 650:	77 1f       	adc	r23, r23
+ 652:	61 15       	cp	r22, r1
+ 654:	71 05       	cpc	r23, r1
+ 656:	21 f0       	breq	.+8      	; 0x660 <__mulhi3_exit>
+ 658:	96 95       	lsr	r25
+ 65a:	87 95       	ror	r24
+ 65c:	00 97       	sbiw	r24, 0x00	; 0
+ 65e:	99 f7       	brne	.-26     	; 0x646 <__mulhi3_loop>
+
+00000660 <__mulhi3_exit>:
+ 660:	95 2f       	mov	r25, r21
+ 662:	80 2d       	mov	r24, r0
+ 664:	08 95       	ret
+
+00000666 <_exit>:
+ 666:	f8 94       	cli
+
+00000668 <__stop_program>:
+ 668:	ff cf       	rjmp	.-2      	; 0x668 <__stop_program>

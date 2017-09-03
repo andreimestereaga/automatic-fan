@@ -1,0 +1,428 @@
+Archive member included because of file (symbol)
+
+c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a(_mulhi3.o)
+                              air_blowerv1.o (__mulhi3)
+c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a(_exit.o)
+                              c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr25/crttn24.o (exit)
+c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a(_copy_data.o)
+                              air_blowerv1.o (__do_copy_data)
+c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a(_clear_bss.o)
+                              air_blowerv1.o (__do_clear_bss)
+
+Allocating common symbols
+Common symbol       size              file
+
+signal_periods      0x40              air_blowerv1.o
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+text             0x00000000         0x00002000         xr
+data             0x00800060         0x0000ffa0         rw !x
+eeprom           0x00810000         0x00010000         rw !x
+fuse             0x00820000         0x00000400         rw !x
+lock             0x00830000         0x00000400         rw !x
+signature        0x00840000         0x00000400         rw !x
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr25/crttn24.o
+LOAD air_blowerv1.o
+LOAD dbg_putchar.o
+LOAD pwm_at24.o
+LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a
+LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr25\libc.a
+LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a
+
+.hash
+ *(.hash)
+
+.dynsym
+ *(.dynsym)
+
+.dynstr
+ *(.dynstr)
+
+.gnu.version
+ *(.gnu.version)
+
+.gnu.version_d
+ *(.gnu.version_d)
+
+.gnu.version_r
+ *(.gnu.version_r)
+
+.rel.init
+ *(.rel.init)
+
+.rela.init
+ *(.rela.init)
+
+.rel.text
+ *(.rel.text)
+ *(.rel.text.*)
+ *(.rel.gnu.linkonce.t*)
+
+.rela.text
+ *(.rela.text)
+ *(.rela.text.*)
+ *(.rela.gnu.linkonce.t*)
+
+.rel.fini
+ *(.rel.fini)
+
+.rela.fini
+ *(.rela.fini)
+
+.rel.rodata
+ *(.rel.rodata)
+ *(.rel.rodata.*)
+ *(.rel.gnu.linkonce.r*)
+
+.rela.rodata
+ *(.rela.rodata)
+ *(.rela.rodata.*)
+ *(.rela.gnu.linkonce.r*)
+
+.rel.data
+ *(.rel.data)
+ *(.rel.data.*)
+ *(.rel.gnu.linkonce.d*)
+
+.rela.data
+ *(.rela.data)
+ *(.rela.data.*)
+ *(.rela.gnu.linkonce.d*)
+
+.rel.ctors
+ *(.rel.ctors)
+
+.rela.ctors
+ *(.rela.ctors)
+
+.rel.dtors
+ *(.rel.dtors)
+
+.rela.dtors
+ *(.rela.dtors)
+
+.rel.got
+ *(.rel.got)
+
+.rela.got
+ *(.rela.got)
+
+.rel.bss
+ *(.rel.bss)
+
+.rela.bss
+ *(.rela.bss)
+
+.rel.plt
+ *(.rel.plt)
+
+.rela.plt
+ *(.rela.plt)
+
+.text           0x00000000      0x66a
+ *(.vectors)
+ .vectors       0x00000000       0x22 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr25/crttn24.o
+                0x00000000                __vectors
+                0x00000000                __vector_default
+ *(.vectors)
+ *(.progmem.gcc*)
+ .progmem.gcc_sw_table
+                0x00000022       0x10 air_blowerv1.o
+ *(.progmem*)
+                0x00000032                . = ALIGN (0x2)
+                0x00000032                __trampolines_start = .
+ *(.trampolines)
+ .trampolines   0x00000032        0x0 linker stubs
+ *(.trampolines*)
+                0x00000032                __trampolines_end = .
+ *(.jumptables)
+ *(.jumptables*)
+ *(.lowtext)
+ *(.lowtext*)
+                0x00000032                __ctors_start = .
+ *(.ctors)
+                0x00000032                __ctors_end = .
+                0x00000032                __dtors_start = .
+ *(.dtors)
+                0x00000032                __dtors_end = .
+ SORT(*)(.ctors)
+ SORT(*)(.dtors)
+ *(.init0)
+ .init0         0x00000032        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr25/crttn24.o
+                0x00000032                __init
+ *(.init0)
+ *(.init1)
+ *(.init1)
+ *(.init2)
+ .init2         0x00000032        0x8 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr25/crttn24.o
+ *(.init2)
+ *(.init3)
+ *(.init3)
+ *(.init4)
+ .init4         0x0000003a       0x16 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a(_copy_data.o)
+                0x0000003a                __do_copy_data
+ .init4         0x00000050       0x10 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a(_clear_bss.o)
+                0x00000050                __do_clear_bss
+ *(.init4)
+ *(.init5)
+ *(.init5)
+ *(.init6)
+ *(.init6)
+ *(.init7)
+ *(.init7)
+ *(.init8)
+ *(.init8)
+ *(.init9)
+ .init9         0x00000060        0x4 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr25/crttn24.o
+ *(.init9)
+ *(.text)
+ .text          0x00000064        0x2 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr25/crttn24.o
+                0x00000064                __vector_1
+                0x00000064                __vector_12
+                0x00000064                __bad_interrupt
+                0x00000064                __vector_6
+                0x00000064                __vector_3
+                0x00000064                __vector_11
+                0x00000064                __vector_13
+                0x00000064                __vector_7
+                0x00000064                __vector_5
+                0x00000064                __vector_4
+                0x00000064                __vector_9
+                0x00000064                __vector_2
+                0x00000064                __vector_15
+                0x00000064                __vector_8
+                0x00000064                __vector_14
+                0x00000064                __vector_10
+                0x00000064                __vector_16
+ .text          0x00000066      0x590 air_blowerv1.o
+                0x000000be                main
+                0x00000066                _sys_init
+ .text          0x000005f6       0x3a dbg_putchar.o
+                0x000005f6                dbg_putchar
+ .text          0x00000630       0x12 pwm_at24.o
+                0x00000630                at24_pwmInit
+ .text          0x00000642        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a(_mulhi3.o)
+ .text          0x00000642        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a(_exit.o)
+ .text          0x00000642        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a(_copy_data.o)
+ .text          0x00000642        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a(_clear_bss.o)
+                0x00000642                . = ALIGN (0x2)
+ *(.text.*)
+ .text.libgcc   0x00000642       0x24 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a(_mulhi3.o)
+                0x00000642                __mulhi3
+ .text.libgcc   0x00000666        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a(_exit.o)
+ .text.libgcc   0x00000666        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a(_copy_data.o)
+ .text.libgcc   0x00000666        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a(_clear_bss.o)
+                0x00000666                . = ALIGN (0x2)
+ *(.fini9)
+ .fini9         0x00000666        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a(_exit.o)
+                0x00000666                exit
+                0x00000666                _exit
+ *(.fini9)
+ *(.fini8)
+ *(.fini8)
+ *(.fini7)
+ *(.fini7)
+ *(.fini6)
+ *(.fini6)
+ *(.fini5)
+ *(.fini5)
+ *(.fini4)
+ *(.fini4)
+ *(.fini3)
+ *(.fini3)
+ *(.fini2)
+ *(.fini2)
+ *(.fini1)
+ *(.fini1)
+ *(.fini0)
+ .fini0         0x00000666        0x4 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a(_exit.o)
+ *(.fini0)
+                0x0000066a                _etext = .
+
+.data           0x00800060        0x4 load address 0x0000066a
+                0x00800060                PROVIDE (__data_start, .)
+ *(.data)
+ .data          0x00800060        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr25/crttn24.o
+ .data          0x00800060        0x3 air_blowerv1.o
+                0x00800060                u8PwmVals
+ .data          0x00800063        0x0 dbg_putchar.o
+ .data          0x00800063        0x0 pwm_at24.o
+ .data          0x00800063        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a(_mulhi3.o)
+ .data          0x00800063        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a(_exit.o)
+ .data          0x00800063        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a(_copy_data.o)
+ .data          0x00800063        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a(_clear_bss.o)
+ *(.data*)
+ *(.rodata)
+ *(.rodata*)
+ *(.gnu.linkonce.d*)
+                0x00800064                . = ALIGN (0x2)
+ *fill*         0x00800063        0x1 00
+                0x00800064                _edata = .
+                0x00800064                PROVIDE (__data_end, .)
+
+.bss            0x00800064       0x5f
+                0x00800064                PROVIDE (__bss_start, .)
+ *(.bss)
+ .bss           0x00800064        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr25/crttn24.o
+ .bss           0x00800064       0x1f air_blowerv1.o
+                0x00800076                temperatureCel
+                0x00800073                temperatureRaw
+                0x0080007d                dec_state
+                0x00800064                signal_code
+                0x00800070                termoCheckTimer
+                0x00800068                signal_code2
+                0x00800078                checkTermoTim
+                0x0080007a                button_count
+                0x0080007b                sig_idx
+                0x00800072                i
+                0x0080006c                signal_shifter
+                0x0080006f                termocoupleOn
+                0x0080006d                pwm_lvl
+                0x00800082                idx
+                0x00800079                button_lvl
+                0x00800080                sig_lvl
+                0x0080006e                pwm_isOn
+                0x00800075                termoFail
+                0x0080007e                hold_counter
+                0x00800081                sig_lvl_prev
+ .bss           0x00800083        0x0 dbg_putchar.o
+ .bss           0x00800083        0x0 pwm_at24.o
+ .bss           0x00800083        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a(_mulhi3.o)
+ .bss           0x00800083        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a(_exit.o)
+ .bss           0x00800083        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a(_copy_data.o)
+ .bss           0x00800083        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr25\libgcc.a(_clear_bss.o)
+ *(.bss*)
+ *(COMMON)
+ COMMON         0x00800083       0x40 air_blowerv1.o
+                0x00800083                signal_periods
+                0x008000c3                PROVIDE (__bss_end, .)
+                0x0000066a                __data_load_start = LOADADDR (.data)
+                0x0000066e                __data_load_end = (__data_load_start + SIZEOF (.data))
+
+.noinit         0x008000c3        0x0
+                0x008000c3                PROVIDE (__noinit_start, .)
+ *(.noinit*)
+                0x008000c3                PROVIDE (__noinit_end, .)
+                0x008000c3                _end = .
+                0x008000c3                PROVIDE (__heap_start, .)
+
+.eeprom         0x00810000        0x0
+ *(.eeprom*)
+                0x00810000                __eeprom_end = .
+
+.fuse
+ *(.fuse)
+ *(.lfuse)
+ *(.hfuse)
+ *(.efuse)
+
+.lock
+ *(.lock*)
+
+.signature
+ *(.signature*)
+
+.stab
+ *(.stab)
+
+.stabstr
+ *(.stabstr)
+
+.stab.excl
+ *(.stab.excl)
+
+.stab.exclstr
+ *(.stab.exclstr)
+
+.stab.index
+ *(.stab.index)
+
+.stab.indexstr
+ *(.stab.indexstr)
+
+.comment
+ *(.comment)
+
+.debug
+ *(.debug)
+
+.line
+ *(.line)
+
+.debug_srcinfo
+ *(.debug_srcinfo)
+
+.debug_sfnames
+ *(.debug_sfnames)
+
+.debug_aranges  0x00000000       0x60
+ *(.debug_aranges)
+ .debug_aranges
+                0x00000000       0x20 air_blowerv1.o
+ .debug_aranges
+                0x00000020       0x20 dbg_putchar.o
+ .debug_aranges
+                0x00000040       0x20 pwm_at24.o
+
+.debug_pubnames
+                0x00000000      0x1be
+ *(.debug_pubnames)
+ .debug_pubnames
+                0x00000000      0x179 air_blowerv1.o
+ .debug_pubnames
+                0x00000179       0x22 dbg_putchar.o
+ .debug_pubnames
+                0x0000019b       0x23 pwm_at24.o
+
+.debug_info     0x00000000      0x88a
+ *(.debug_info)
+ .debug_info    0x00000000      0x757 air_blowerv1.o
+ .debug_info    0x00000757       0xc2 dbg_putchar.o
+ .debug_info    0x00000819       0x71 pwm_at24.o
+ *(.gnu.linkonce.wi.*)
+
+.debug_abbrev   0x00000000      0x241
+ *(.debug_abbrev)
+ .debug_abbrev  0x00000000      0x18b air_blowerv1.o
+ .debug_abbrev  0x0000018b       0x79 dbg_putchar.o
+ .debug_abbrev  0x00000204       0x3d pwm_at24.o
+
+.debug_line     0x00000000      0x84a
+ *(.debug_line)
+ .debug_line    0x00000000      0x710 air_blowerv1.o
+ .debug_line    0x00000710       0xbb dbg_putchar.o
+ .debug_line    0x000007cb       0x7f pwm_at24.o
+
+.debug_frame    0x00000000       0x70
+ *(.debug_frame)
+ .debug_frame   0x00000000       0x30 air_blowerv1.o
+ .debug_frame   0x00000030       0x20 dbg_putchar.o
+ .debug_frame   0x00000050       0x20 pwm_at24.o
+
+.debug_str      0x00000000      0x220
+ *(.debug_str)
+ .debug_str     0x00000000      0x1db air_blowerv1.o
+                                0x216 (size before relaxing)
+ .debug_str     0x000001db       0x2a dbg_putchar.o
+                                 0xe3 (size before relaxing)
+ .debug_str     0x00000205       0x1b pwm_at24.o
+                                 0xc3 (size before relaxing)
+
+.debug_loc      0x00000000      0x52e
+ *(.debug_loc)
+ .debug_loc     0x00000000      0x510 air_blowerv1.o
+ .debug_loc     0x00000510       0x1e dbg_putchar.o
+
+.debug_macinfo
+ *(.debug_macinfo)
+OUTPUT(air_blowerv1.elf elf32-avr)
+LOAD linker stubs
+
+.debug_ranges   0x00000000       0x90
+ .debug_ranges  0x00000000       0x90 air_blowerv1.o
